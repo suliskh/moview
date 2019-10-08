@@ -52,8 +52,6 @@ function Navbar({ isLoginSuccess }: NavbarProps) {
 	);
 }
 
-const mapDispatchToProps = ({})
-
 const mapStateToProps = ({ auth }: RootState): StateProps => ({
 	isLoginSuccess: auth.isLoginSuccess,
 });
