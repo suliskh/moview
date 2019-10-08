@@ -12,8 +12,6 @@ class PrivateRoute extends Route<PrivateRouteProps> {
 	render() {
 		const storedUser = localStorage.getItem(LOCAL_STORAGE_AUTHENTICATED_USER);
 
-		console.log(storedUser);
-
 		if (!this.props.isAuthenticated && !storedUser) {
 			const renderComponent = () => <Redirect to={{ pathname: '/login' }} />;
 			return <Route {...this.props} component={renderComponent} />;
