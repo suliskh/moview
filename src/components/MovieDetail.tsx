@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { Dimmer, Loader } from 'semantic-ui-react';
+import { Container, Dimmer, Loader } from 'semantic-ui-react';
 import { MovieCard } from './MovieCard';
 import { Movie } from '../store/movie/types';
 import { RootState } from '../store';
@@ -37,19 +37,24 @@ class MovieDetail extends React.Component<MovieDetailProps, {}> {
 		const { data, isLoading } = this.props;
 
 		return data && !isLoading ? (
-			<MovieCard
-				key={data.id}
-				averageVote={data.vote_average}
-				backdropPath={IMG_BASE_URL + data.backdrop_path}
-				movieId={data.id}
-				overview={data.overview}
-				releaseDate={data.release_data}
-				title={data.title}
-			/>
+			<Container>
+				<MovieCard
+					key={data.id}
+					averageVote={data.vote_average}
+					backdropPath={IMG_BASE_URL + data.backdrop_path}
+					movieId={data.id}
+					overview={data.overview}
+					releaseDate={data.release_data}
+					title={data.title}
+					fluid={true}
+				/>
+			</Container>
 		) : (
-			<Dimmer active inverted>
-				<Loader>Loading</Loader>
-			</Dimmer>
+			<Container>
+				<Dimmer active inverted>
+					<Loader>Loading</Loader>
+				</Dimmer>
+			</Container>
 		);
 	}
 }

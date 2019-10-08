@@ -44,6 +44,7 @@ class MovieList extends React.Component<MovieListProps, {}> {
 							overview={movie.overview}
 							releaseDate={movie.release_data}
 							title={movie.title}
+							hasLink={true}
 						/>
 					))
 				) : (

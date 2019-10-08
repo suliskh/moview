@@ -9,6 +9,8 @@ interface MovieCardProps {
 	overview: string;
 	releaseDate: string;
 	title: string;
+	hasLink?: boolean;
+	fluid?: boolean;
 }
 
 function MovieCard({
@@ -18,13 +20,15 @@ function MovieCard({
 	overview,
 	releaseDate,
 	title,
+	hasLink,
+	fluid
 }: MovieCardProps): JSX.Element {
 	return (
-		<Card>
+		<Card fluid={fluid}>
 			<Image src={backdropPath} wrapped ui={false} />
 			<Card.Content>
 				<Card.Header>
-					<Link to={'movie/' + movieId}>{title}</Link>
+					{hasLink ? <Link to={'movie/' + movieId}>{title}</Link> : title}
 				</Card.Header>
 				<Card.Meta>
 					<span className="date">{releaseDate}</span>
